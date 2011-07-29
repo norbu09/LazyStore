@@ -13,7 +13,6 @@
             <a href="/cart/remove/<%= $item->{id} %>">remove</a>
         </div>
         <% } %>
-        <%= dumper $items %> 
 	</div>
     <div class="clear"></div>
     <hr />

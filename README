@@ -1,0 +1,13 @@
+LazyStore
+=========
+
+LazyStore is a CouchDB driven Mojolicious app that uses Shopping::Basket
+- a CouchDB based shopping cart - as the main engine for all shopping
+related things.
+
+Install
+-------
+
+- Install Shopping::Basket and setup the according CouchDB dabases and
+views
+- run ./lazy_store
