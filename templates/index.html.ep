@@ -1,0 +1,13 @@
+% layout 'default';
+% title 'LazyStore';
+<div id="main" role="main">
+    <hr />
+    <div class="grid_3">
+        LazyStore
+	</div>
+    <div class="grid_9">
+        the lazy store demo
+	</div>
+    <div class="clear"></div>
+    <hr />
+</div>

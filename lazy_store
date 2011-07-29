@@ -1,0 +1,15 @@
+#!/usr/bin/env perl
+
+use Mojolicious::Lite;
+use Shopping::Basket;
+
+my $basket = Shopping::Basket->new;
+
+get '/' => sub {
+  my $self = shift;
+  $self->render('index');
+};
+
+
+app->start;
+
