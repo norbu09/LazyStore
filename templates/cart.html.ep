@@ -1,0 +1,20 @@
+% layout 'default';
+% title 'LazyStore';
+<div id="main" role="main">
+    <hr />
+    <div class="grid_3">
+        Cart
+	</div>
+    <div class="grid_9">
+        <% foreach my $item (@{$items}) { %>
+        <div class="cart_item">
+            <img src="/img/products/<%= $item->{images}->[0] %>" />
+            <div class="price"><%= $item->{price} %></div>
+            <a href="/cart/remove/<%= $item->{id} %>">remove</a>
+        </div>
+        <% } %>
+        <%= dumper $items %> 
+	</div>
+    <div class="clear"></div>
+    <hr />
+</div>

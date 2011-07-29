@@ -1,0 +1,25 @@
+% layout 'default';
+% title 'LazyStore';
+<div id="main" role="main">
+    <hr />
+    <div class="grid_3">
+        <%= $product->{name} %>
+	</div>
+    <div class="grid_7">
+        <div class="product">
+            <img src="/img/products/<%= $product->{images}->[0] %>" />
+            <div class="description"><%= $product->{description} %></div>
+            </a>
+        </div>
+	</div>
+    <div class="grid_2">
+        <div class="price">
+            <%= $product->{price} %>
+        </div>
+        <div class="cart_link">
+            <a href="/buy/<%= $product->{link} %>">buy now</a>
+        </div>
+	</div>
+    <div class="clear"></div>
+    <hr />
+</div>

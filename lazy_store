@@ -1,15 +1,57 @@
 #!/usr/bin/env perl
 
+use lib 'lib';
 use Mojolicious::Lite;
 use Shopping::Basket;
 
-my $basket = Shopping::Basket->new;
+my $basket = Shopping::Basket::Product->new(
+    couch_port => 4984,
+    basket_id => 'B8084DFA-B9B5-11E0-B2EB-A24884E03B1F'
+);
 
-get '/' => sub {
-  my $self = shift;
-  $self->render('index');
+helper cart => sub  {
+    my $self = shift;
+
+    return $basket->count || 0;
 };
 
+get '/' => sub {
+    my $self = shift;
+
+    $self->stash(products => $basket->get_showcase);
+
+    $self->render('index');
+};
+
+get '/products/:product' => sub  {
+    my $self = shift;
+
+    $self->stash(product => $basket->get_product_by_link($self->param('product')));
+
+} => 'product';
+
+get '/buy/:product' => sub  {
+    my $self = shift;
+
+    my $product = $basket->get_product_by_link($self->param('product'));
+    $basket->add($product);
+
+    $self->redirect_to('/');
+};
+
+get '/cart' => sub  {
+    my $self = shift;
+
+    $self->stash(items => $basket->load);
+    $self->stash(total => $basket->get_total);
+} => 'cart';
+
+get '/cart/remove/:id' => sub  {
+    my $self = shift;
+
+    $basket->delete($self->param('id'));
+    $self->redirect_to('/cart');
+};
 
 app->start;
 

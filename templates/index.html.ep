@@ -6,7 +6,16 @@
         LazyStore
 	</div>
     <div class="grid_9">
-        the lazy store demo
+        <% foreach my $product (@{$products}) { %>
+        <div class="showcase_product">
+            <a href="/products/<%= $product->{link} %>">
+            <img src="/img/products/<%= $product->{image} %>" />
+            <div class="teaser"><%= $product->{teaser} %></div>
+            <div class="price"><%= $product->{price} %></div>
+            </a>
+        </div>
+        <% } %>
+        <!-- <%= dumper $products %> -->
 	</div>
     <div class="clear"></div>
     <hr />
